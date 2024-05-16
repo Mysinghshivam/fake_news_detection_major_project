@@ -1,6 +1,7 @@
 import 'dart:ffi';
 
 import 'package:fake_news_detection/login_page.dart';
+import 'package:fake_news_detection/twitterBotPage.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 
@@ -15,8 +16,6 @@ class home extends StatefulWidget {
 
 class _homeState extends State<home> {
 
-  TextEditingController _twitterIdController = TextEditingController();
-  //variable define
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
@@ -36,7 +35,7 @@ class _homeState extends State<home> {
               ),
                 body:  TabBarView(                  children: [
                     fakenews(),
-                    twitterBot()
+                    Twitter()
                     //Icon(Icons.directions_transit),
                   ],),
               ),
@@ -51,63 +50,9 @@ class _homeState extends State<home> {
     );
   }
 
-  Widget twitterBot(){
-    return Container(
-      padding: EdgeInsets.all(20.0),
-      color: Colors.black.withOpacity(0.1),
-      child: Column(
-        mainAxisAlignment: MainAxisAlignment.start,
-        children: [
-          TextField(
-            controller: _twitterIdController,
-            decoration: InputDecoration(
-              hintText: 'Enter your Twitter ID',
-              border: OutlineInputBorder(
-                borderRadius: BorderRadius.circular(10.0),
-              ),
-              contentPadding: EdgeInsets.all(15.0),
-              filled: true,
-              fillColor: Colors.white.withOpacity(0.7), // Change background color here
-            ),
-          ),
-          SizedBox(height: 20.0),
-          ElevatedButton(
-            onPressed: () {
-              // Handle button press
-              // For example, you can access entered Twitter ID using _twitterIdController.text
-            },
-            child: Text(
-              'Submit',
-              style: TextStyle(fontSize: 16.0,fontWeight: FontWeight.bold),
-            ),
-            style: ElevatedButton.styleFrom(
-              elevation: 15,
-              padding: EdgeInsets.symmetric(horizontal: 30.0, vertical: 15.0),
-              shape: RoundedRectangleBorder(
-                borderRadius: BorderRadius.circular(10.0),
-              ),
-            ),
-          ),
-          SizedBox(height: 350,),
-          SizedBox(
-            height: 50,
-            width: 120,
-            child: ElevatedButton(
-              onPressed: () {
-                logout(context);
-              },
-              // style: ButtonStyle(elevation: MaterialStateProperty(12.0 )),
-              style: ElevatedButton.styleFrom(
 
-                  elevation: 15.0,
-                  textStyle: const TextStyle(color: Colors.white)),
-              child: const Text('log out',style: TextStyle(fontSize: 20,fontWeight: FontWeight.bold),),
-            ),
-          ),
-        ],
-      ),
-    );
-  }
+
+
   // the logout function
   Future<void> logout(BuildContext context) async {
     await FirebaseAuth.instance.signOut();
