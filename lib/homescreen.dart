@@ -6,6 +6,7 @@ import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 
 import 'colors.dart';
+import 'fakeNews.dart';
 
 class home extends StatefulWidget {
   const home({super.key});
@@ -19,6 +20,7 @@ class _homeState extends State<home> {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
+        debugShowCheckedModeBanner: false,
         home: DefaultTabController(length: 2,
             child: Scaffold(
               appBar: AppBar(
@@ -34,7 +36,7 @@ class _homeState extends State<home> {
                   ],),
               ),
                 body:  TabBarView(                  children: [
-                    fakenews(),
+                    FakeNews(),
                     Twitter()
                     //Icon(Icons.directions_transit),
                   ],),
@@ -42,21 +44,10 @@ class _homeState extends State<home> {
             ));
   }
 
-  Widget fakenews(){
-    return Scaffold(
-      backgroundColor: Colors.black.withOpacity(0.1),
-      body: Center(
-      ),
-    );
-  }
 
 
 
 
-  // the logout function
-  Future<void> logout(BuildContext context) async {
-    await FirebaseAuth.instance.signOut();
-    Navigator.of(context)
-        .pushReplacement(MaterialPageRoute(builder: (context) => login()));
-  }
+
+
 }

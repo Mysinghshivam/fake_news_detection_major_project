@@ -115,11 +115,11 @@ class _registerState extends State<register> {
           ),
           _buildRememberForget(),
           SizedBox(
-            height: 30,
+            height: 20,
           ),
           _buildRegisterButton(),
           SizedBox(
-            height: 15,
+            height: 10,
           ),
           _buildOtherRegister(),
         ],
