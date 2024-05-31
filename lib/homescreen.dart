@@ -25,14 +25,14 @@ class _homeState extends State<home> {
             child: Scaffold(
               appBar: AppBar(
                 backgroundColor: appBarColor.withOpacity(0.6),
-                title: Text("Guardian AI",style: TextStyle(fontSize: 27),),
+                title: Text("Guardian AI",style: TextStyle(fontSize: 27,fontWeight: FontWeight.w600),),
                 leading: Icon(Icons.security_outlined,size: 35,),
                 actions: [IconButton(onPressed: (){}, icon: Icon(Icons.account_circle,size: 35,))],
                 bottom: const TabBar(
                   dividerColor: Colors.blue,
                   tabs: [
-                    Text("Fake News",style: TextStyle(fontSize: 30,fontWeight:FontWeight.bold),),
-                    Text("Twitter Bot",style: TextStyle(fontSize: 30,fontWeight:FontWeight.bold),)
+                    Text("Fake News",style: TextStyle(fontSize: 30,fontWeight:FontWeight.w500),),
+                    Text("Twitter Bot",style: TextStyle(fontSize: 30,fontWeight:FontWeight.w500),)
                   ],),
               ),
                 body:  TabBarView(                  children: [
