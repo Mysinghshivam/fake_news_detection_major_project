@@ -285,7 +285,8 @@ class _State extends State<login> {
       await _auth
           .signInWithEmailAndPassword(email: email, password: password)
           .then((uid) => {
-                Fluttertoast.showToast(msg: "Login Successful"),
+                Fluttertoast.showToast(msg: "Login Successful",
+                backgroundColor: Colors.green),
                 Navigator.of(context).pushReplacement(
                     MaterialPageRoute(builder: (context) => home())),
               });

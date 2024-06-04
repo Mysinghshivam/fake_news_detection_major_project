@@ -26,13 +26,16 @@ class _homeState extends State<home> {
               appBar: AppBar(
                 backgroundColor: appBarColor.withOpacity(0.6),
                 title: Text("Guardian AI",style: TextStyle(fontSize: 27,fontWeight: FontWeight.w600),),
-                leading: Icon(Icons.security_outlined,size: 35,),
-                actions: [IconButton(onPressed: (){}, icon: Icon(Icons.account_circle,size: 35,))],
+                leading: Icon(Icons.security_outlined,size: 30,),
+                actions: [IconButton(onPressed: (){}, icon: Icon(Icons.account_circle,size: 30,)),
+                  IconButton(onPressed: (){
+                    logout(context);
+                  }, icon: Icon(Icons.logout,size: 30,))],
                 bottom: const TabBar(
                   dividerColor: Colors.blue,
                   tabs: [
-                    Text("Fake News",style: TextStyle(fontSize: 30,fontWeight:FontWeight.w500),),
-                    Text("Twitter Bot",style: TextStyle(fontSize: 30,fontWeight:FontWeight.w500),)
+                    Text("Fake News",style: TextStyle(fontSize: 25,fontWeight:FontWeight.w500),),
+                    Text("Twitter Bot",style: TextStyle(fontSize: 25,fontWeight:FontWeight.w500),)
                   ],),
               ),
                 body:  TabBarView(                  children: [
@@ -47,7 +50,11 @@ class _homeState extends State<home> {
 
 
 
-
+  Future<void> logout(BuildContext context) async {
+    await FirebaseAuth.instance.signOut();
+    Navigator.of(context)
+        .pushReplacement(MaterialPageRoute(builder: (context) => login()));
+  }
 
 
 }
