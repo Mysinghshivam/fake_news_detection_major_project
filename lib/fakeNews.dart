@@ -3,6 +3,7 @@ import 'dart:convert';
 import 'package:fake_news_detection/config/Config.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
+import 'package:fluttertoast/fluttertoast.dart';
 import 'package:syncfusion_flutter_gauges/gauges.dart';
 import 'package:http/http.dart' as http;
 import 'login_page.dart';
@@ -177,16 +178,43 @@ class _FakeNewsState extends State<FakeNews> {
           setState(() {
             _isloading = false;
           });
+          Fluttertoast.showToast(
+            msg: "It is a real news",
+            toastLength: Toast.LENGTH_SHORT,
+            gravity: ToastGravity.BOTTOM,
+            timeInSecForIosWeb: 3,
+            backgroundColor: Colors.green,
+            textColor: Colors.white,
+            fontSize: 16.0,
+          );
           return true;
         } else if (label == 'false') {
           setState(() {
             _isloading = false;
           });
+          Fluttertoast.showToast(
+            msg: "It is fake News!",
+            toastLength: Toast.LENGTH_SHORT,
+            gravity: ToastGravity.BOTTOM,
+            backgroundColor: Colors.red,
+            timeInSecForIosWeb: 3,
+            textColor: Colors.white,
+            fontSize: 16.0,
+          );
           return false;
         } else {
           setState(() {
             _isloading = false;
           });
+          Fluttertoast.showToast(
+            msg: " Sorry AI is not able to decide!",
+            toastLength: Toast.LENGTH_SHORT,
+            gravity: ToastGravity.BOTTOM,
+            backgroundColor: Colors.red,
+            timeInSecForIosWeb: 3,
+            textColor: Colors.white,
+            fontSize: 16.0,
+          );
           return null;
         }
       } else {
@@ -199,6 +227,15 @@ class _FakeNewsState extends State<FakeNews> {
       setState(() {
         _isloading = false;
       });
+      Fluttertoast.showToast(
+        msg: " Sorry AI is not able to decide!",
+        toastLength: Toast.LENGTH_SHORT,
+        gravity: ToastGravity.BOTTOM,
+        backgroundColor: Colors.red,
+        timeInSecForIosWeb: 3,
+        textColor: Colors.white,
+        fontSize: 16.0,
+      );
       // You might want to handle the error or rethrow it
       return null;
     }
